@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Crispy Cream</title>
+
+    <link rel="shortcut icon" href="/images/favicon.ico"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="/stylesheets/themes/custom.min.css">
+    <link rel="stylesheet" href="/stylesheets/themes/jquery.mobile.icons.min.css">
+    <link rel="stylesheet" href="/stylesheets/layout.css">
+    <link rel="stylesheet" href="/stylesheets/login.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="/javascripts/jquery.cookie.js"></script>
+    <script src="/javascripts/script.js"></script>
+  </head>
+
+  <body>
+  <!-- Start of register page -->
+  <div data-role="page" id="registerPage">
+      <div data-role="header" class="header">
+          <div data-role="navbar" class="nav responsive">
+              <img src="/images/logo.png" alt="logo" class="logo responsive">
+          </div>
+
+          <center><img src="/images/banner.png" alt="banner" class="banner responsive"></center>
+      </div>
+
+      <div data-role="main" class="ui-content">
+          <p id="form">ADMINISTRATOR/STAFF</p>
+          <p class="account">Already have an account? <a href="#loginPage">Login</a> here</p><br>
+          Username <input type="text" id="new-username" placeholder="Enter username"><br>
+          Password <input type="password" id="new-password" placeholder="Enter password"><br>
+          Confirm Password <input type="password" id="new-password2" placeholder="Re-enter password">
+          <fieldset data-role="controlgroup" data-type="horizontal">
+              <input type="checkbox" id="showPassword-cb" data-mini="true">
+              <label for="showPassword-cb">Show Password</label>
+          </fieldset><br>
+          <button id="register-btn">Register</button>
+      </div>
+
+      <% include partials/footer %>
+  </div>
+  <!-- End of register page -->
+
+  <!-- Start of login page -->
+  <div data-role="page" id="loginPage">
+      <div data-role="header" class="header">
+        <div data-role="navbar" class="nav responsive">
+          <img src="/images/logo.png" alt="logo" class="logo responsive">
+        </div>
+
+        <center><img src="/images/banner.png" alt="banner" class="banner responsive"></center>
+      </div>
+
+      <div data-role="main" class="ui-content">
+          <p id="form">ADMINISTRATOR/STAFF</p>
+          <p class="account">Don't have an account yet? <a href="#registerPage">Sign up</a> here</p><br>
+          Username <input type="text" id="username" placeholder="Enter username"><br>
+          Password <input type="password" id="password" placeholder="Enter password">
+          <fieldset data-role="controlgroup" data-type="horizontal">
+            <input type="checkbox" id="showPassword-cb2" data-mini="true">
+            <label for="showPassword-cb2">Show Password</label>
+          </fieldset><br>
+          <button id="login-btn">Login</button>
+      </div>
+
+      <% include partials/footer %>
+    </div>
+  <!-- End of login page -->
+
+  <!-- Start of checkoutCart page -->
+  <div data-role="page" id="checkoutPage">
+      <div data-role="header" class="header">
+          <div data-role="navbar" class="nav responsive">
+              <img src="/images/logo.png" alt="logo" class="logo responsive">
+
+              <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                  <a href="#clerk-dashboard" data-role="button" class="nav-menu-btn ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-carat-l"><span class="btn-text">BACK TO MENU</span></a>
+                  <button class="nav-logout-btn ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-user"><span class="btn-text">SIGN OUT</span></button>
+              </fieldset>
+          </div>
+
+          <center><img src="/images/banner.png" alt="banner" class="banner responsive"></center>
+
+          <div class="welcome-username"></div>
+      </div>
+
+      <div data-role="main" class="ui-content">
+          <div data-role="collapsible" class="ui-shadow">
+              <h4>Order Summary</h4>
+              <p class="review-item" ></p>
+              <p class="review-price"></p>
+          </div>
+
+          <button id="payment-btn" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-check">Proceed to Payment</button>
+          <button id="remove-btn" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete">Remove All</button>
+
+          <ul data-role="listview" data-inset="true" id="checkout-list">
+              <li id="checkout_1">
+                  <img src="/images/donut_1.png">
+                  <h2>ORIGINAL GLAZED</h2>
+                  <p>Quantity: <span class="cart_quantity"></span></p></a>
+              </li>
+
+              <li id="checkout_2">
+                  <img src="/images/donut_2.png">
+                  <h2>S'MORES</h2>
+                  <p>Quantity: <span class="cart_quantity"></span></p></a>
+              </li>
+
+              <li id="checkout_3">
+                  <img src="/images/donut_3.png">
+                  <h2>STRAWBERRIES & KREME</h2>
+                  <p>Quantity: <span class="cart_quantity"></span></p></a>
+              </li>
+
+              <li id="checkout_4">
+                  <img src="/images/donut_4.png">
+                  <h2>SALTED CARAMEL CHEESECAKE</h2>
+                  <p>Quantity: <span class="cart_quantity"></span></p></a>
+              </li>
+
+              <li id="checkout_5">
+                  <img src="/images/donut_5.png">
+                  <h2>COOKIE DREAM</h2>
+                  <p>Quantity: <span class="cart_quantity"></span></p></a>
+              </li>
+          </ul>
+      </div>
+
+      <% include partials/footer %>
+  </div>
+  <!-- End of checkoutCart page -->
+
+  <!-- Start of manager page -->
+  <div data-role="page" id="manager-dashboard">
+      <div data-role="header" class="header">
+          <div data-role="navbar" class="nav responsive">
+              <img src="/images/logo.png" alt="logo" class="logo responsive">
+
+              <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                  <button class="nav-logout-btn ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-user"><span class="btn-text">SIGN OUT</span></button>
+              </fieldset>
+          </div>
+
+          <center><img src="/images/banner.png" alt="banner" class="banner responsive"></center>
+
+          <p class="welcome-username"></p>
+      </div>
+
+      <div data-role="main" class="ui-content">
+          <div data-role="collapsible" class="ui-shadow">
+              <h4>Sales Summary</h4>
+              <p class="salesItem"></p>
+              <p class="salesPrice"></p>
+          </div>
+
+          <table data-role="table" id="sales-table" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to Display" data-column-popup-theme="a">
+              <thead>
+                <tr class="ui-bar-d">
+                    <th>ID</th>
+                    <th data-priority="1" id="img">IMAGE</th>
+                    <th >DOUGHNUT FLAVOR</th>
+                    <th data-priority="2">SALES VOLUME</th>
+                    <th data-priority="3">SALES PRICE</th>
+                </tr>
+              </thead>    
+
+              <tbody>
+                <tr id="sales-1">
+                    <th class="sales-id"></th>
+                    <td><center><img src="/images/donut_popup_1.png" alt="Original Glazed" class="responsive"></center></td>
+                    <td class="sales-name"></td>
+                    <td class="sales-volume"></td>
+                    <td class="sales-price"></td>
+                </tr>
+
+                <tr id="sales-2">
+                    <th class="sales-id"></th>
+                    <td><center><img src="/images/donut_popup_2.png" alt="S'Mores" class="responsive"></center></td>
+                    <td class="sales-name"></td>
+                    <td class="sales-volume"></td>
+                    <td class="sales-price"></td>
+                </tr>
+
+                <tr id="sales-3">
+                    <th class="sales-id"></th>
+                    <td><center><img src="/images/donut_popup_3.png" alt="Strawberries & Kreme" class="responsive"></center></td>
+                    <td class="sales-name"></td>
+                    <td class="sales-volume"></td>
+                    <td class="sales-price"></td>
+                </tr>
+
+                <tr id="sales-4">
+                    <th class="sales-id"></th>
+                    <td><center><img src="/images/donut_popup_4.png" alt="Salted Caramel Cheesecake" class="responsive"></center></td>
+                    <td class="sales-name"></td>
+                    <td class="sales-volume"></td>
+                    <td class="sales-price"></td>
+                </tr>
+
+                <tr id="sales-5">
+                    <th class="sales-id"></th>
+                    <td><center><img src="/images/donut_popup_5.png" alt="Cookie Dream" class="responsive"></center></td>
+                    <td class="sales-name"></td>
+                    <td class="sales-volume"></td>
+                    <td class="sales-price"></td>
+                </tr>
+              </tbody>  
+           </table>
+      </div>
+  </div>
+  <!-- End of manager page -->
+
+  <!-- Start of clerk page -->
+  <div data-role="page" id="clerk-dashboard">
+      <div data-role="header" class="header">
+          <div data-role="navbar" class="nav responsive">
+              <img src="/images/logo.png" alt="logo" class="logo responsive">
+
+              <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                  <a href="#checkoutPage" data-role="button" class="nav-checkout-btn ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-shop"><span class="btn-text">SHOPPING CART</span></a>
+                  <button class="nav-logout-btn ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-user"><span class="btn-text">SIGN OUT</span></button>
+              </fieldset>
+          </div>
+
+          <center><img src="/images/banner.png" alt="banner" class="banner responsive"></center>
+
+          <div class="welcome-username"></div>
+      </div>
+
+      <div data-role="main" class="ui-content">
+          <ul data-role="listview" data-inset="true" data-icon="plus" id="menu-add-list">
+              <li id="1"><a href="#menu-popup-1" data-rel="popup" data-position-to="window" data-transition="pop">
+                  <img src="/images/donut_1.png">
+                  <h2>ORIGINAL GLAZED</h2>
+                  <p>Price: &euro;<span class="price"></span>0</p>
+                  <p>Description: Our signature doughnut – a light and fluffy dough with our classic glaze.</p>
+                  <p>Stock Quantity: <span class="stock_quantity"></span></p></a>
+              </li>
+
+              <div data-role="popup" id="menu-popup-1" data-overlay-theme="a" data-theme="a" data-dismissible="false">
+                  <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+
+                  <div data-role="header" data-theme="b">
+                      <h1>ORIGINAL GLAZED</h1>
+                  </div>
+
+                  <div role="main" class="ui-content">
+                      <center><img src="/images/donut_popup_1.png"></center>
+                      <h4>Add selected doughnuts to cart?</h4>
+                      <span>Quantity: <input type="number" value="1" min="" max="" class="menu-quantity"></span>
+                      <button data-rel="back" id="menu-add-1" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b add-to-cart-btn" data-transition="flow"><a href="#">Add to Cart</a></button>
+                  </div>
+              </div>
+
+              <li id="2"><a href="#menu-popup-2" data-rel="popup" data-position-to="window" data-transition="pop">
+                  <img src="/images/donut_2.png">
+                  <h2>S'MORES</h2>
+                  <p>Price: &euro;<span class="price"></span>0</p>
+                  <p>Description: A rich chocolate dipped doughnut, with Lotus Biscoff flavoured mallowy filling and crumb.</p>
+                  <p>Stock Quantity: <span class="stock_quantity"></span></p></a>
+              </li>
+
+              <div data-role="popup" id="menu-popup-2" data-overlay-theme="a" data-theme="a" data-dismissible="false">
+                  <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+
+                  <div data-role="header" data-theme="b">
+                      <h1>S'MORES</h1>
+                  </div>
+
+                  <div role="main" class="ui-content">
+                      <center><img src="/images/donut_popup_2.png"></center>
+                      <h4>Add selected doughnuts to cart?</h4>
+                      <span>Quantity: <input type="number" min="1" value="1" class="menu-quantity"></span>
+                      <button data-rel="back" id="menu-add-2" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b add-to-cart-btn" data-transition="flow"><a href="#">Add to Cart</a></button>
+                  </div>
+              </div>
+
+              <li id="3"><a href="#menu-popup-3" data-rel="popup" data-position-to="window" data-transition="pop">
+                  <img src="/images/donut_3.png">
+                  <h2>STRAWBERRIES & KREME</h2>
+                  <p>Price: &euro;<span class="price"></span>0</p>
+                  <p>Description: Hand-dipped in strawberry icing and sprinkled with crunchy shortcake crumble and strawberry pieces.</p>
+                  <p>Stock Quantity: <span class="stock_quantity"></span></p></a>
+              </li>
+
+              <div data-role="popup" id="menu-popup-3" data-overlay-theme="a" data-theme="a" data-dismissible="false">
+                 <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+
+                  <div data-role="header" data-theme="b">
+                      <h1>STRAWBERRIES & KREME</h1>
+                  </div>
+
+                  <div role="main" class="ui-content">
+                      <center><img src="/images/donut_popup_3.png"></center>
+                      <h4>Add selected doughnuts to cart?</h4>
+                      <span>Quantity: <input type="number" min="1" value="1" class="menu-quantity"></span>
+                      <button data-rel="back" id="menu-add-3" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b add-to-cart-btn" data-transition="flow"><a href="#">Add to Cart</a></button>
+                  </div>
+              </div>
+
+              <li id="4"><a href="#menu-popup-4" data-rel="popup" data-position-to="window" data-transition="pop">
+                  <img src="/images/donut_4.png">
+                  <h2>SALTED CARAMEL CHEESECAKE</h2>
+                  <p>Price: &euro;<span class="price"></span>0</p>
+                  <p>Description: Hand decorated with salted caramel drizzle and shortcake crumb.</p>
+                  <p>Stock Quantity: <span class="stock_quantity"></span></p></a>
+              </li>
+
+              <div data-role="popup" id="menu-popup-4" data-overlay-theme="a" data-theme="a" data-dismissible="false">
+                  <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+
+                  <div data-role="header" data-theme="b">
+                      <h1>SALTED CARAMEL CHEESECAKE</h1>
+                  </div>
+
+                  <div role="main" class="ui-content">
+                      <center><img src="/images/donut_popup_4.png"></center>
+                      <h4>Add selected doughnuts to cart?</h4>
+                      <span>Quantity: <input type="number" min="1" value="1" class="menu-quantity"></span>
+                      <button data-rel="back" id="menu-add-4" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b add-to-cart-btn" data-transition="flow"><a href="#">Add to Cart</a></button>
+                  </div>
+              </div>
+
+              <li id="5"><a href="#menu-popup-5" data-rel="popup" data-position-to="window" data-transition="pop">
+                  <img src="/images/donut_5.png">
+                  <h2>COOKIE DREAM</h2>
+                  <p>Price: &euro;<span class="price"></span>0</p>
+                  <p>Description: Our signature ring doughnut topped with a cookie cream frosting and crunchy bits of American-style cookie.</p>
+                  <p>Stock Quantity: <span class="stock_quantity"></span></p></a>
+              </li>
+
+              <div data-role="popup" id="menu-popup-5" data-overlay-theme="a" data-theme="a" data-dismissible="false">
+                  <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+
+                  <div data-role="header" data-theme="b">
+                      <h1>COOKIE DREAM</h1>
+                  </div>
+
+                  <div role="main" class="ui-content">
+                      <center><img src="/images/donut_popup_5.png"></center>
+                      <h4>Add selected doughnuts to cart?</h4>
+                      <span>Quantity: <input type="number" min="1" value="1" class="menu-quantity"></span>
+                      <button data-rel="back" id="menu-add-5" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b add-to-cart-btn" data-transition="flow"><a href="#">Add to Cart</a></button>
+                  </div>
+              </div>
+         </ul>
+      </div>
+
+      <% include partials/footer %>
+  </div>
+  <!-- End of clerk page -->
+
+  <!-- Start of cook page -->
+  <div data-role="page" id="cook-dashboard">
+      <div data-role="header" class="header">
+          <div data-role="navbar" class="nav responsive">
+              <img src="/images/logo.png" alt="logo" class="logo responsive">
+
+              <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                  <button class="nav-logout-btn ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-user"><span class="btn-text">SIGN OUT</span></button>
+              </fieldset>
+          </div>
+
+          <center><img src="/images/banner.png" alt="banner" class="banner responsive"></center>
+
+          <p class="welcome-username"></p>
+      </div>
+
+      <div data-role="main" class="ui-content">
+          <ul data-role="listview" data-inset="true" data-icon="plus" id="inventory-add-list">
+              <li id="inventory-1"><a href="#inventory-popup-1" data-rel="popup" data-position-to="window" data-transition="pop">
+                  <img src="/images/donut_1.png">
+                  <h2>ORIGINAL GLAZED</h2>
+                  <p>Stock Quantity: <span class="stock_quantity"></span></p></a>
+              </li>
+
+              <div data-role="popup" id="inventory-popup-1" data-overlay-theme="a" data-theme="a" data-dismissible="false" style="max-width:400px;">
+                  <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+
+                  <div data-role="header" data-theme="b">
+                      <h1>ORIGINAL GLAZED</h1>
+                  </div>
+
+                  <div role="main" class="ui-content">
+                      <center><img src="/images/donut_popup_1.png"></center>
+                      <h4>Add selected doughnuts to inventory?</h4>
+                      <span>Quantity: <input type="number" min="1" value="1" class="inventory-quantity"></span>
+                      <button data-rel="back" id="inventory-add-1" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b add-to-inventory-btn" data-transition="flow"><a href="#">Add Stock</a></button>
+                  </div>
+              </div>
+
+              <li id="inventory-2"><a href="#inventory-popup-2" data-rel="popup" data-position-to="window" data-transition="pop">
+                  <img src="/images/donut_2.png">
+                  <h2>S'MORES</h2>
+                  <p>Stock Quantity: <span class="stock_quantity"></span></p></a>
+              </li>
+
+              <div data-role="popup" id="inventory-popup-2" data-overlay-theme="a" data-theme="a" data-dismissible="false" style="max-width:400px;">
+                  <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+
+                  <div data-role="header" data-theme="b">
+                      <h1>S'MORES</h1>
+                  </div>
+
+                  <div role="main" class="ui-content">
+                      <center><img src="/images/donut_popup_2.png"></center>
+                      <h4>Add selected doughnuts to inventory?</h4>
+                      <span>Quantity: <input type="number" min="1" value="1" class="inventory-quantity"></span>
+                      <button data-rel="back" id="inventory-add-2" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b add-to-inventory-btn" data-transition="flow"><a href="#">Add Stock</a></button>
+                  </div>
+              </div>
+
+              <li id="inventory-3"><a href="#inventory-popup-3" data-rel="popup" data-position-to="window" data-transition="pop">
+                  <img src="/images/donut_3.png">
+                  <h2>STRAWBERRIES & KREME</h2>
+                  <p>Stock Quantity: <span class="stock_quantity"></span></p></a>
+              </li>
+
+              <div data-role="popup" id="inventory-popup-3" data-overlay-theme="a" data-theme="a" data-dismissible="false" style="max-width:400px;">
+                  <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+
+                  <div data-role="header" data-theme="b">
+                      <h1>STRAWBERRIES & KREME</h1>
+                  </div>
+
+                  <div role="main" class="ui-content">
+                      <center><img src="/images/donut_popup_3.png"></center>
+                      <h4>Add selected doughnuts to inventory?</h4>
+                      <span>Quantity: <input type="number" min="1" value="1" class="inventory-quantity"></span>
+                      <button data-rel="back" id="inventory-add-3" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b add-to-inventory-btn" data-transition="flow"><a href="#">Add Stock</a></button>
+                  </div>
+              </div>
+
+              <li id="inventory-4"><a href="#inventory-popup-4" data-rel="popup" data-position-to="window" data-transition="pop">
+                  <img src="/images/donut_4.png">
+                  <h2>SALTED CARAMEL CHEESECAKE</h2>
+                  <p>Stock Quantity: <span class="stock_quantity"></span></p></a>
+              </li>
+
+              <div data-role="popup" id="inventory-popup-4" data-overlay-theme="a" data-theme="a" data-dismissible="false" style="max-width:400px;">
+                  <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+
+                  <div data-role="header" data-theme="b">
+                      <h1>SALTED CARAMEL CHEESECAKE</h1>
+                  </div>
+
+                  <div role="main" class="ui-content">
+                      <center><img src="/images/donut_popup_4.png"></center>
+                      <h4>Add selected doughnuts to inventory?</h4>
+                      <span>Quantity: <input type="number" min="1" value="1" class="inventory-quantity"></span>
+                      <button data-rel="back" id="inventory-add-4" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b add-to-inventory-btn" data-transition="flow"><a href="#">Add Stock</a></button>
+                  </div>
+              </div>
+
+              <li id="inventory-5"><a href="#inventory-popup-5" data-rel="popup" data-position-to="window" data-transition="pop">
+                  <img src="/images/donut_5.png">
+                  <h2>COOKIE DREAM</h2>
+                  <p>Stock Quantity: <span class="stock_quantity"></span></p></a>
+              </li>
+
+              <div data-role="popup" id="inventory-popup-5" data-overlay-theme="a" data-theme="a" data-dismissible="false" style="max-width:400px;">
+                  <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+
+                  <div data-role="header" data-theme="b">
+                      <h1>COOKIE DREAM</h1>
+                  </div>
+
+                  <div role="main" class="ui-content">
+                      <center><img src="/images/donut_popup_5.png"></center>
+                      <h4>Add selected doughnuts to inventory?</h4>
+                      <span>Quantity: <input type="number" min="1" value="1" class="inventory-quantity"></span>
+                      <button data-rel="back" id="inventory-add-5" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b add-to-inventory-btn" data-transition="flow"><a href="#">Add Stock</a></button>
+                  </div>
+              </div>
+          </ul>
+      </div>
+
+      <% include partials/footer %>
+  </div>
+  <!-- End of cook page -->
+  </body>
+</html>
+

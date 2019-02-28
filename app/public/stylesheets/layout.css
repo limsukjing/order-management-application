@@ -1,0 +1,68 @@
+body {
+  font-family: Inconsolata, sans-serif;
+  font-size: 18px;
+}
+
+.nav {
+  width: 100%;
+  position: fixed;
+  background-color: #8C8C8C;
+  height: 80px;
+  z-index: 2;
+}
+
+.nav fieldset {
+  float: right;
+  margin-right: 20px;
+  padding-top: 16px;
+  z-index: 2;
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+  max-width: 280px;
+  padding-top: 12px;
+  padding-left: 20px;
+}
+
+.banner {
+  width: 100%;
+  height: auto;
+  max-width: 750px;
+  padding: 120px 0 5px 0px;
+}
+
+#footer p {
+  font-family: Inconsolata, sans-serif;
+  font-weight: normal;
+  font-size: 15px;
+  text-align: center;
+  text-shadow: none;
+  color: #808080;
+}
+
+@media (max-width: 550px) {
+  .logo {
+    max-width: 220px;
+    padding: 15px 0 0px 10px;
+  }
+
+  .banner {
+    padding-top: 80px;
+  }
+
+  .btn-text {
+    display: none;
+  }
+
+  .nav-checkout-btn, .nav-logout-btn {
+    height: 30px;
+    width: 30px;
+  }
+
+  .ui-icon-shop, .ui-icon-user, .ui-icon-carat-l {
+    height: 20px;
+    width: 10px;
+  }
+}

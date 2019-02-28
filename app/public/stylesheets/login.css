@@ -1,0 +1,14 @@
+#form {
+    font-family: Inconsolata, sans-serif;
+    font-size: 23px;
+    text-shadow: none;
+    text-decoration: underline;
+}
+
+#username, #password {
+    text-shadow: none;
+}
+
+showPassword-cb {
+    float: right;
+}
